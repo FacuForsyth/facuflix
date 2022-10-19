@@ -1,0 +1,9 @@
+.imagen {
+  position: absolute;
+  width: 100%;
+  height: 450px;
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  --tw-gradient-from: #000;
+}
+
+/* class='position-absolute full-width progress' style={{height: '450px'}} */
