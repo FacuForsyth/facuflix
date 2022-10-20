@@ -7,12 +7,11 @@ import {
   onAuthStateChanged,
  } from "firebase/auth";
  //base de datos
- import { setDoc, doc } from "firebase/firestore";
-
+ import {setDoc, doc} from "firebase/firestore";
 
 const AuthContext = createContext();
 
-export function AuthContextProvider({children}) {
+export function AuthContextProvider({ children }) {
 
   const [user, setUser] = useState({});
 
@@ -41,7 +40,7 @@ export function AuthContextProvider({children}) {
   });
 
   return (
-    <AuthContext.Provider value={{ signUp, logIn, logOut, user}}>
+    <AuthContext.Provider value={{ signUp, logIn, logOut, user }}>
       {children}
     </AuthContext.Provider> 
   )
@@ -49,4 +48,4 @@ export function AuthContextProvider({children}) {
 
 export function UserAuth() {
   return useContext(AuthContext)
-}
+};
