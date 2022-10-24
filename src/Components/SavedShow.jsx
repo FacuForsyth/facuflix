@@ -21,7 +21,7 @@ const SavedShow = () => {
   
   useEffect(() => {
     onSnapshot(doc(db, 'users', `${user?.email}`), (doc) => {
-      setMovies(doc.data()?.savedShows);
+      setMovies(doc.data()?.saveShows);
     })
   }, [user?.email]);
 
@@ -30,7 +30,7 @@ const SavedShow = () => {
     try {
       const result = movies.filter((item) => item.id !== passedID);
       await updateDoc(movieRef, {
-        savedShows : result,
+        saveShows : result,
       })
     } catch (error) {
       console.log(error)

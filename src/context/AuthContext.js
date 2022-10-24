@@ -6,8 +6,7 @@ import {
   signOut, 
   onAuthStateChanged,
  } from "firebase/auth";
- //base de datos
- import {setDoc, doc} from "firebase/firestore";
+import {setDoc, doc} from "firebase/firestore";
 
 const AuthContext = createContext();
 
@@ -18,7 +17,7 @@ export function AuthContextProvider({ children }) {
   function signUp(email, password) {
     createUserWithEmailAndPassword(auth, email, password);
     setDoc(doc(db, 'users', email), {
-      savedShows: []
+      saveShows: []
     })
   };
 

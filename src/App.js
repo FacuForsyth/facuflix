@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import Detail from "./Components/Detail";
 import NavBar from "./Components/NavBar";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import { AuthContextProvider } from "./context/AuthContext";
@@ -24,6 +25,7 @@ function App() {
               </ProtectedRoute>
             } 
           />
+          <Route path='/movie/:id' element={<Detail />} />
         </Routes>
       </AuthContextProvider>
     </div>
