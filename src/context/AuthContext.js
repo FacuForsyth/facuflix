@@ -1,33 +1,34 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
-import { 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword, 
-  signOut, 
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
   onAuthStateChanged,
- } from "firebase/auth";
-import {setDoc, doc} from "firebase/firestore";
+} from 'firebase/auth';
+import {setDoc,doc} from 'firebase/firestore'
 
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
-
+  
   const [user, setUser] = useState({});
 
-  function signUp(email, password) {
-    createUserWithEmailAndPassword(auth, email, password);
-    setDoc(doc(db, 'users', email), {
-      saveShows: []
+  async function signUp(email, password) {
+    //console.log(email)
+    await setDoc(doc(db, 'users', email), {
+        savedShows: []
     })
-  };
+    createUserWithEmailAndPassword(auth, email, password);
+  }
 
   function logIn(email, password) {
-    return signInWithEmailAndPassword(auth, email, password)
-  };
+    return signInWithEmailAndPassword(auth, email, password);
+  }
 
   function logOut() {
-    return signOut(auth)
-  };
+    return signOut(auth);
+  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -41,10 +42,10 @@ export function AuthContextProvider({ children }) {
   return (
     <AuthContext.Provider value={{ signUp, logIn, logOut, user }}>
       {children}
-    </AuthContext.Provider> 
-  )
-};
+    </AuthContext.Provider>
+  );
+}
 
 export function UserAuth() {
-  return useContext(AuthContext)
-};
+  return useContext(AuthContext);
+}

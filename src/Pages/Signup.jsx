@@ -7,7 +7,7 @@ const Signup = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { user, signUp } = UserAuth(); 
+  const { signUp } = UserAuth(); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -16,7 +16,7 @@ const Signup = () => {
       await signUp(email, password);
       navigate('/');
     } catch (error) {
-      console.log(error);
+      console.log("error en sign uo", error);
     }
   };
 
@@ -50,7 +50,7 @@ const Signup = () => {
               <p className="py-4">
                 <span className="text-gray-600">
                   Already subscribed to Facuflix?
-                </span>{' '} 
+                </span>{'  '} 
                 <Link to='/login'>
                   Sign In
                 </Link>
