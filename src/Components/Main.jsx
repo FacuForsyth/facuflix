@@ -13,22 +13,17 @@ const Main = () => {
     await axios.get(requests.requestPopular).then((resp)=>{
       setMovies(resp.data.results)
     })
-  }
+  };
 
   useEffect(()=> {
-    //axios.get(requests.requestPopular).then((resp)=>{
-    //  setMovies(resp.data.results)
-    //})
     fetchMovies();
-  }, [])
+  }, []);
   //console.log(movie)
-  
 
   return (
     <div className='w-full h-[550px] text-white'>
       <div className='w-full h-full'>
         <MovieMain movie={movie} />
-        
       </div>
     </div>
   )
